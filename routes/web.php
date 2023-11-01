@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/greeting/{name}/{lastname?}', function (string $name, $lastname='Do
 Route::get('/operations/{n1}/{n2}', function ($n1, $n2) {
     return 'Suma: ' . ($n1 + $n2) . '<br>' . 'Resta: ' . ($n1 - $n2) . '<br>' . 'Multiplicación: ' . ($n1 * $n2) . '<br>' . 'División: ' . ($n1 / $n2);
 })->whereNumber('n1')->whereNumber('n2');
+
+Route::get('/user/{name}/{lastname?}', [UserController::class, 'show'])->whereAlpha('name')->whereAlpha('lastname');
