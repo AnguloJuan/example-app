@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\carController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -31,3 +32,6 @@ Route::get('/operations/{n1}/{n2}', function ($n1, $n2) {
 })->whereNumber('n1')->whereNumber('n2');
 
 Route::get('/user/{name}/{lastname?}', [UserController::class, 'show'])->whereAlpha('name')->whereAlpha('lastname');
+
+Route::get('/cars', [carController::class, 'index']);
+Route::get('/cars/{id}', [carController::class, 'show'])->whereNumber('id');
